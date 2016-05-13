@@ -1,0 +1,156 @@
+---
+cidr_networks:
+  container: 192.168.212.0/24
+  tunnel: 172.16.3.0/24
+  storage: 172.16.2.0/24
+
+used_ips:
+  - "192.168.212.1,192.168.212.20"
+  - "192.168.212.250,192.168.212.255"
+
+global_overrides:
+  internal_lb_vip_address: 172.16.1.10
+  external_lb_vip_address: 192.168.212.10
+  tunnel_bridge: "br-vxlan"
+  management_bridge: "br-mgmt"
+  provider_networks:
+    - network:
+        container_bridge: "br-mgmt"
+        container_type: "veth"
+        container_interface: "eth1"
+        ip_from_q: "container"
+        type: "raw"
+        group_binds:
+          - all_containers
+          - hosts
+        is_container_address: true
+        is_ssh_address: true
+    - network:
+        container_bridge: "br-vxlan"
+        container_type: "veth"
+        container_interface: "eth10"
+        ip_from_q: "tunnel"
+        type: "vxlan"
+        range: "1:1000"
+        group_binds:
+          - neutron_linuxbridge_agent
+    - network:
+        container_bridge: "br-vlan"
+        container_type: "veth"
+        container_interface: "eth12"
+        host_bind_override: "em1.890"
+        type: "flat"
+        net_name: "flat"
+        group_binds:
+          - neutron_linuxbridge_agent
+    - network:
+        container_bridge: "br-storage"
+        container_type: "veth"
+        container_interface: "eth2"
+        ip_from_q: "storage"
+        type: "raw"
+        group_binds:
+          - glance_api
+          - cinder_api
+          - cinder_volume
+          - nova_compute
+          - swift_proxy  
+
+shared-infra_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16
+
+repo-infra_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16
+
+os-infra_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16
+
+identity_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16
+
+network_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16
+
+compute_hosts:
+  openstack-poc-1:
+    ip: 192.168.212.11
+  openstack-poc-2:
+    ip: 192.168.212.12
+  openstack-poc-3:
+    ip: 192.168.212.13
+
+storage-infra_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16
+
+haproxy_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16
+
+storage_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_1
+      cinder_default_availability_zone: cinderAZ_1
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "{{ storage_address }}"
+        limit_container_types: cinder_volume
+
+  openstack-poc-5:
+    ip: 192.168.212.15
+    container_vars:
+      cinder_storage_availability_zone: cinderAZ_2
+      cinder_default_availability_zone: cinderAZ_2
+      cinder_backends:
+        lvm:
+          volume_backend_name: LVM_iSCSI
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_group: cinder-volumes
+          iscsi_ip_address: "{{ storage_address }}"
+        limit_container_types: cinder_volume
+
+log_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16

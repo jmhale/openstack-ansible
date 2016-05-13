@@ -1,0 +1,44 @@
+global_overrides:
+  swift:
+    part_power: 8
+    weight: 100
+    min_part_hours: 1
+    repl_number: 2
+    storage_network: 'br-storage'
+    drives:
+      - name: mpath1
+    mount_point: /srv/node
+    account:
+    container:
+    storage_policies:
+      - policy:
+          name: gold
+          index: 0
+          default: True
+      - policy:
+          name: silver
+          index: 1
+          repl_number: 3
+          deprecated: True
+
+swift-proxy_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+  openstack-poc-5:
+    ip: 192.168.212.15
+  openstack-poc-6:
+    ip: 192.168.212.16
+
+swift_hosts:
+  openstack-poc-4:
+    ip: 192.168.212.14
+    storage_ip: 172.16.2.14
+    container_vars:
+      swift_vars:
+        zone: 0
+  openstack-poc-5:
+    ip: 192.168.212.15
+    storage_ip: 172.16.2.15
+    container_vars:
+      swift_vars:
+        zone: 1
