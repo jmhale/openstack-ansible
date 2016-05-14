@@ -67,27 +67,27 @@ neutron_plugin_base:
    #- qos
 
 ## Worker thread Overrides
-nova_osapi_compute_workers: 8
-nova_conductor_workers: 8
-nova_metadata_workers: 8
+nova_osapi_compute_workers: 4
+nova_conductor_workers: 4
+nova_metadata_workers: 4
 
-neutron_api_workers: 8
-neutron_metadata_workers: 8
+neutron_api_workers: 4
+neutron_metadata_workers: 4
 
-cinder_osapi_volume_workers: 8
+cinder_osapi_volume_workers: 4
 
-glance_api_workers: 8
-glance_registry_workers: 8
+glance_api_workers: 4
+glance_registry_workers: 4
 
-swift_account_server_replicator_workers: 8
-swift_server_replicator_workers: 8
-swift_object_replicator_workers: 8
-swift_account_server_workers: 8
-swift_container_server_workers: 8
-swift_object_server_workers: 8
-swift_proxy_server_workers: 8
+swift_account_server_replicator_workers: 4
+swift_server_replicator_workers: 4
+swift_object_replicator_workers: 4
+swift_account_server_workers: 4
+swift_container_server_workers: 4
+swift_object_server_workers: 4
+swift_proxy_server_workers: 4
 
 keystone_wsgi_processes: "{{ ansible_processor_vcpus / 4 | default (1) * 2 }}"
 
-heat_engine_workers: 8
-heat_api_workers: 8
+heat_engine_workers: 4
+heat_api_workers: 4
