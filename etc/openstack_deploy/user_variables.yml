@@ -65,3 +65,29 @@ neutron_plugin_base:
    #- vpnaas
    - metering
    #- qos
+
+## Worker thread Overrides
+nova_osapi_compute_workers: 16
+nova_conductor_workers: 16
+nova_metadata_workers: 16
+
+neutron_api_workers: 16
+neutron_metadata_workers: 16
+
+cinder_osapi_volume_workers: 16
+
+glance_api_workers: 16
+glance_registry_workers: 16
+
+swift_account_server_replicator_workers: 16
+swift_server_replicator_workers: 16
+swift_object_replicator_workers: 16
+swift_account_server_workers: 16
+swift_container_server_workers: 16
+swift_object_server_workers: 16
+swift_proxy_server_workers: 16
+
+keystone_wsgi_processes: "{{ ansible_processor_vcpus / 2| default (1) * 2 }}"
+
+heat_engine_workers: 16
+heat_api_workers: 16
