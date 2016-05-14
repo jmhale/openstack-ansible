@@ -1,6 +1,6 @@
 ---
 cidr_networks:
-  container: 172.16.1.0/24
+  container: 192.168.212.0/24
   tunnel: 172.16.3.0/24
   storage: 172.16.2.0/24
 
@@ -9,7 +9,7 @@ used_ips:
   - "192.168.212.250,192.168.212.255"
 
 global_overrides:
-  internal_lb_vip_address: 172.16.1.10
+  internal_lb_vip_address: 192.168.212.10
   external_lb_vip_address: 192.168.212.10
   tunnel_bridge: "br-vxlan"
   management_bridge: "br-mgmt"
