@@ -29,7 +29,6 @@ keystone_ldap:
      group_allow_delete: "False"
      user_id_attribute: "cn"
      user_name_attribute: "sAMAccountName"
-     user_filter: "(groupMembership=CN=OpenStack-Users,OU=OpenStack,OU=Security,OU=Groups,DC=twpn,DC=root,DC=washpost,DC=com)"
 
 # Glance Options
 glance_default_store: swift
