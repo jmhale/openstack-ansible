@@ -44,8 +44,8 @@ horizon_keystone_multidomain_support: True
 swift_allow_all_users: True
 
 ## Debug and Verbose options.
-debug: false
-verbose: false
+debug: True
+verbose: True
 
 ## Neutron Multicast Overrides
 neutron_linuxbridge_agent_ini_overrides:
