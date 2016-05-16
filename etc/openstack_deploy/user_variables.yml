@@ -19,7 +19,7 @@ keystone_ldap:
      user: "CN=svcOpenStack,OU=Service Accounts,DC=twpn,DC=root,DC=washpost,DC=com"
      password: "{{keystone_ldap_password}}"
      user_tree_dn: "OU=Engineering,OU=TWPN,DC=twpn,DC=root,DC=washpost,DC=com"
-     group_tree_dn: "CN=OpenStack-Users,OU=OpenStack,OU=Security,OU=Groups,DC=twpn,DC=root,DC=washpost,DC=com"
+     group_tree_dn: "OU=OpenStack,OU=Security,OU=Groups,DC=twpn,DC=root,DC=washpost,DC=com"
      user_objectclass: "user"
      user_allow_create: "False"
      user_allow_update: "False"
@@ -44,8 +44,8 @@ horizon_keystone_multidomain_support: True
 swift_allow_all_users: True
 
 ## Debug and Verbose options.
-debug: True
-verbose: True
+debug: False
+verbose: False
 
 ## Neutron Multicast Overrides
 neutron_linuxbridge_agent_ini_overrides:
