@@ -21,7 +21,6 @@ keystone_ldap:
      user_tree_dn: "OU=Engineering,OU=TWPN,DC=twpn,DC=root,DC=washpost,DC=com"
      group_tree_dn: "OU=OpenStack,OU=Security,OU=Groups,DC=twpn,DC=root,DC=washpost,DC=com"
      user_objectclass: "user"
-     group_objectclass: "group"
      user_allow_create: "False"
      user_allow_update: "False"
      user_allow_delete: "False"
@@ -30,6 +29,9 @@ keystone_ldap:
      group_allow_delete: "False"
      user_id_attribute: "cn"
      user_name_attribute: "sAMAccountName"
+     group_objectclass: "group"
+     group_id_attribute: "cn"
+     group_name_attribute: "sAMAccountName"     
 
 # Glance Options
 glance_default_store: swift
