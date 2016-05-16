@@ -15,7 +15,7 @@ haproxy_user_ssl_ca_cert: /root/L1Kchainroot-chain-combo.crt
 # Keystone Options
 keystone_ldap:
  washpost:
-     url: "ldaps://ldaptc.washpost.com"
+     url: "ldaptc.washpost.com"
      user: "CN=svcOpenStack,OU=Service Accounts,DC=twpn,DC=root,DC=washpost,DC=com"
      password: "{{keystone_ldap_password}}"
      user_tree_dn: "OU=TWPN,DC=twpn,DC=root,DC=washpost,DC=com"
