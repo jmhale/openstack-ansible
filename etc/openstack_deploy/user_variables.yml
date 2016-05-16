@@ -18,7 +18,7 @@ keystone_ldap:
      url: "ldap://ldaptc.washpost.com"
      user: "CN=svcOpenStack,OU=Service Accounts,DC=twpn,DC=root,DC=washpost,DC=com"
      password: "{{keystone_ldap_password}}"
-     user_tree_dn: "OU=TWPN,DC=twpn,DC=root,DC=washpost,DC=com"
+     user_tree_dn: "OU=Engineering,OU=TWPN,DC=twpn,DC=root,DC=washpost,DC=com"
      group_tree_dn: "CN=OpenStack-Users,OU=OpenStack,OU=Security,OU=Groups,DC=twpn,DC=root,DC=washpost,DC=com"
      user_objectclass: "inetOrgPerson"
      user_allow_create: "False"
