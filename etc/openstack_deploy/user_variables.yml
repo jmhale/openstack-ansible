@@ -13,23 +13,23 @@ haproxy_user_ssl_key: /root/star_wpprivate_com.key
 haproxy_user_ssl_ca_cert: /root/L1Kchainroot-chain-combo.crt
 
 # Keystone Options
-#keystone_ldap:
-#  WaPoLDAP:
-#      url: "ldaps://ldaptc.washpost.com"
-#      user: "cn=svcOpenStack,ou=Service Accounts,dc=twpn,dc=root,dc=washpost,dc=com"
-#      password: "{{keystone_ldap_password}}"
-#      user_tree_dn: "ou=TWPN,dc=twpn,dc=root,dc=washpost,dc=com"
-#      group_tree_dn: "cn=OpenStack-Users,ou=OpenStack,ou=Security,ou=Groups,dc=twpn,dc=root,dc=washpost,dc=com"
-#      user_objectclass: "inetOrgPerson"
-#      user_allow_create: "False"
-#      user_allow_update: "False"
-#      user_allow_delete: "False"
-#      group_allow_create: "False"
-#      group_allow_update: "False"
-#      group_allow_delete: "False"
-#      user_id_attribute: "cn"
-#      user_name_attribute: "sAMAccountName"
-#      user_filter: "(groupMembership=cn=OpenStack-Users,ou=OpenStack,ou=Security,ou=Groups,dc=twpn,dc=root,dc=washpost,dc=com)"
+keystone_ldap:
+ washpost:
+     url: "ldaps://ldaptc.washpost.com"
+     user: "CN=svcOpenStack,OU=Service Accounts,DC=twpn,DC=root,DC=washpost,DC=com"
+     password: "{{keystone_ldap_password}}"
+     user_tree_dn: "OU=TWPN,DC=twpn,DC=root,DC=washpost,DC=com"
+     group_tree_dn: "CN=OpenStack-Users,OU=OpenStack,OU=Security,OU=Groups,DC=twpn,DC=root,DC=washpost,DC=com"
+     user_objectclass: "inetOrgPerson"
+     user_allow_create: "False"
+     user_allow_update: "False"
+     user_allow_delete: "False"
+     group_allow_create: "False"
+     group_allow_update: "False"
+     group_allow_delete: "False"
+     user_id_attribute: "cn"
+     user_name_attribute: "sAMAccountName"
+     user_filter: "(groupMembership=CN=OpenStack-Users,OU=OpenStack,OU=Security,OU=Groups,DC=twpn,DC=root,DC=washpost,DC=com)"
 
 # Glance Options
 glance_default_store: swift
@@ -39,8 +39,7 @@ haproxy_keepalived_external_vip_cidr: "{{external_lb_vip_address}}/32"
 haproxy_keepalived_internal_vip_cidr: "{{internal_lb_vip_address}}/32"
 
 # Horizon Options
-#horizon_keystone_multidomain_support: True
-horizon_keystone_multidomain_support: False
+horizon_keystone_multidomain_support: True
 
 # Swift Options
 swift_allow_all_users: True
