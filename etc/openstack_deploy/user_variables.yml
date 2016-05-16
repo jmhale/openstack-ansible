@@ -21,6 +21,7 @@ keystone_ldap:
      user_tree_dn: "OU=Engineering,OU=TWPN,DC=twpn,DC=root,DC=washpost,DC=com"
      group_tree_dn: "OU=OpenStack,OU=Security,OU=Groups,DC=twpn,DC=root,DC=washpost,DC=com"
      user_objectclass: "user"
+     group_objectclass: "group"
      user_allow_create: "False"
      user_allow_update: "False"
      user_allow_delete: "False"
